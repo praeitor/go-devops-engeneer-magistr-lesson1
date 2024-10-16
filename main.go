@@ -76,7 +76,7 @@ func main() {
 		if err == nil && err2 == nil {
 			freeDiskSpace := (totalDisk - usedDisk) / (1024 * 1024)
 			if usedDisk*100 > totalDisk*90 {
-				fmt.Printf("Free disk space is to low: %d Mb left\n", int(freeDiskSpace))
+				fmt.Printf("Free disk space is too low: %d Mb left\n", int(freeDiskSpace))
 			}
 		}
 
