@@ -80,6 +80,15 @@ func main() {
 			}
 		}
 
+		totalBandwidth, err := strconv.ParseFloat(data[5], 64)
+		usedBandwidth, err2 := strconv.ParseFloat(data[6], 64)
+		if err == nil && err2 == nil {
+			freeBandwidth := (totalBandwidth - usedBandwidth) / (1024 * 1024 / 8)
+			if usedBandwidth/totalBandwidth > 0.9 {
+				fmt.Printf("Network bandwidth usage high: %.2f Mbit/s available\n", freeBandwidth)
+			}
+		}
+
 		resp.Body.Close()
 		time.Sleep(10 * time.Second)
 	}
