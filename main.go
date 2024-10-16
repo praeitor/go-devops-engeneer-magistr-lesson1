@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"time"
 )
@@ -19,16 +19,14 @@ func main() {
 			continue
 		}
 
-		body, err := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
 		if err != nil {
 			fmt.Println("Error reading response body:", err)
-			resp.Body.Close()
 			time.Sleep(10 * time.Second)
 			continue
 		}
 
 		fmt.Println("Data received:", string(body))
-		resp.Body.Close()
 
 		time.Sleep(10 * time.Second)
 	}
