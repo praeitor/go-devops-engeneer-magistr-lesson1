@@ -71,6 +71,15 @@ func main() {
 			}
 		}
 
+		totalDisk, err := strconv.ParseFloat(data[3], 64)
+		usedDisk, err2 := strconv.ParseFloat(data[4], 64)
+		if err == nil && err2 == nil {
+			freeDiskSpace := (usedDisk - usedDisk) / (1024 * 1024)
+			if usedDisk/totalDisk > 0.9 {
+				fmt.Printf("Free disk space is to low: %.2f Mb left\n", freeDiskSpace)
+			}
+		}
+
 		resp.Body.Close()
 		time.Sleep(10 * time.Second)
 	}
