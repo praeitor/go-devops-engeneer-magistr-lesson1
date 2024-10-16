@@ -67,7 +67,7 @@ func main() {
 		if err == nil && err2 == nil {
 			memoryUsage := (usedMemory / totalMemory) * 100
 			if memoryUsage > 80 {
-				fmt.Printf("Memory usage too hihg: %d%%\n", int(memoryUsage))
+				fmt.Printf("Memory usage too high: %d%%\n", int(memoryUsage))
 			}
 		}
 
@@ -76,7 +76,7 @@ func main() {
 		if err == nil && err2 == nil {
 			freeDiskSpace := (usedDisk - usedDisk) / (1024 * 1024)
 			if usedDisk/totalDisk > 0.9 {
-				fmt.Printf("Free disk space is to low: %.2f Mb left\n", freeDiskSpace)
+				fmt.Printf("Free disk space is to low: %d Mb left\n", int(freeDiskSpace))
 			}
 		}
 
