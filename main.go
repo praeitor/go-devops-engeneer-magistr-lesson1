@@ -65,9 +65,8 @@ func main() {
 		totalMemory, err := strconv.Atoi(data[1])
 		usedMemory, err2 := strconv.Atoi(data[2])
 		if err == nil && err2 == nil {
-			memoryUsage := (usedMemory / totalMemory) * 100
-			if memoryUsage > 80 {
-				fmt.Printf("Memory usage too high: %d%%\n", int(memoryUsage))
+			if usedMemory*100 > totalMemory*80 {
+				fmt.Printf("Memory usage too high: %d%%\n", (usedMemory*100)/totalMemory)
 			}
 		}
 
