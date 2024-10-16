@@ -59,7 +59,7 @@ func main() {
 
 		loadAvg, err := strconv.ParseFloat(data[0], 64)
 		if err == nil && loadAvg > 30 {
-			fmt.Printf("Load Average is too high: %.2f", loadAvg)
+			fmt.Printf("Load Average is too high: %.2f\n", loadAvg)
 		}
 
 		totalMemory, err := strconv.ParseFloat(data[1], 64)
@@ -67,7 +67,7 @@ func main() {
 		if err == nil && err2 == nil {
 			memoryUsage := (usedMemory / totalMemory) * 100
 			if memoryUsage > 80 {
-				fmt.Printf("Memory usage too hihg: %.2f%%]n", memoryUsage)
+				fmt.Printf("Memory usage too hihg: %.2f%%\n", memoryUsage)
 			}
 		}
 
