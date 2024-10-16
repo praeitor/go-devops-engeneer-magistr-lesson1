@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -56,8 +57,21 @@ func main() {
 			continue
 		}
 
-		resp.Body.Close()
+		loadAvg, err := strconv.ParseFloat(data[0], 64)
+		if err == nil && loadAvg > 30 {
+			fmt.Printf("Load Average is too high: %.2f", loadAvg)
+		}
 
+		totalMemory, err := strconv.ParseFloat(data[1], 64)
+		usedMemory, err2 := strconv.ParseFloat(data[2], 64)
+		if err == nil && err2 == nil {
+			memoryUsage := (usedMemory / totalMemory) * 100
+			if memoryUsage > 80 {
+				fmt.Printf("Memory usage too hihg: %.2f%%]n", memoryUsage)
+			}
+		}
+
+		resp.Body.Close()
 		time.Sleep(10 * time.Second)
 	}
 }
