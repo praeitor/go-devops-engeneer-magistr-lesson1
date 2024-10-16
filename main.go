@@ -83,7 +83,7 @@ func main() {
 		usedBandwidth, err2 := strconv.Atoi(data[6])
 		if err == nil && err2 == nil {
 			if usedBandwidth*100 > totalBandwidth*90 {
-				freeBandwidth := (totalBandwidth - usedBandwidth) / (1024 * 1024 / 8)
+				freeBandwidth := (totalBandwidth - usedBandwidth) / (1024 * 1024)
 				fmt.Printf("Network bandwidth usage high: %d Mbit/s available\n", int(freeBandwidth))
 			}
 		}
