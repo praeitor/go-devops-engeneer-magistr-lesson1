@@ -12,7 +12,7 @@ func main() {
 	client := &http.Client{}
 
 	for {
-		resp, err := client.Get(ulr)
+		resp, err := client.Get(url)
 		if err != nil {
 			fmt.Println("Error fetching data:", err)
 			time.Sleep(10 * time.Second)
@@ -20,7 +20,7 @@ func main() {
 		}
 
 		body, err := ioutil.ReadAll(resp.Body)
-		if err != nill {
+		if err != nil {
 			fmt.Println("Error reading response body:", err)
 			resp.Body.Close()
 			time.Sleep(10 * time.Second)
