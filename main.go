@@ -59,7 +59,7 @@ func main() {
 
 		loadAvg, err := strconv.ParseFloat(data[0], 64)
 		if err == nil && loadAvg > 30 {
-			fmt.Printf("Load Average is too high: %.2f\n", loadAvg)
+			fmt.Printf("Load Average is too high: %d\n", int(loadAvg))
 		}
 
 		totalMemory, err := strconv.ParseFloat(data[1], 64)
@@ -85,7 +85,7 @@ func main() {
 		if err == nil && err2 == nil {
 			freeBandwidth := (totalBandwidth - usedBandwidth) / (1024 * 1024 / 8)
 			if usedBandwidth/totalBandwidth > 0.9 {
-				fmt.Printf("Network bandwidth usage high: %.2f Mbit/s available\n", freeBandwidth)
+				fmt.Printf("Network bandwidth usage high: %d Mbit/s available\n", int(freeBandwidth))
 			}
 		}
 
