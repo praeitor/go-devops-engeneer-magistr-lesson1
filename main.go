@@ -57,13 +57,13 @@ func main() {
 			continue
 		}
 
-		loadAvg, err := strconv.ParseFloat(data[0], 64)
+		loadAvg, err := strconv.Atoi(data[0])
 		if err == nil && loadAvg > 30 {
 			fmt.Printf("Load Average is too high: %d\n", int(loadAvg))
 		}
 
-		totalMemory, err := strconv.ParseFloat(data[1], 64)
-		usedMemory, err2 := strconv.ParseFloat(data[2], 64)
+		totalMemory, err := strconv.Atoi(data[1])
+		usedMemory, err2 := strconv.Atoi(data[2])
 		if err == nil && err2 == nil {
 			memoryUsage := (usedMemory / totalMemory) * 100
 			if memoryUsage > 80 {
@@ -71,20 +71,20 @@ func main() {
 			}
 		}
 
-		totalDisk, err := strconv.ParseFloat(data[3], 64)
-		usedDisk, err2 := strconv.ParseFloat(data[4], 64)
+		totalDisk, err := strconv.Atoi(data[3])
+		usedDisk, err2 := strconv.Atoi(data[4])
 		if err == nil && err2 == nil {
-			freeDiskSpace := (usedDisk - usedDisk) / (1024 * 1024)
-			if usedDisk/totalDisk > 0.9 {
+			freeDiskSpace := (totalDisk - usedDisk) / (1024 * 1024)
+			if usedDisk*100 > totalDisk*90 {
 				fmt.Printf("Free disk space is to low: %d Mb left\n", int(freeDiskSpace))
 			}
 		}
 
-		totalBandwidth, err := strconv.ParseFloat(data[5], 64)
-		usedBandwidth, err2 := strconv.ParseFloat(data[6], 64)
+		totalBandwidth, err := strconv.Atoi(data[5])
+		usedBandwidth, err2 := strconv.Atoi(data[6])
 		if err == nil && err2 == nil {
-			freeBandwidth := (totalBandwidth - usedBandwidth) / (1024 * 1024 / 8)
-			if usedBandwidth/totalBandwidth > 0.9 {
+			if usedBandwidth*100 > totalBandwidth*90 {
+				freeBandwidth := (totalBandwidth - usedBandwidth) / (1024 * 1024 / 8)
 				fmt.Printf("Network bandwidth usage high: %d Mbit/s available\n", int(freeBandwidth))
 			}
 		}
