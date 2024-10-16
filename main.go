@@ -67,7 +67,7 @@ func main() {
 		if err == nil && err2 == nil {
 			memoryUsage := (usedMemory / totalMemory) * 100
 			if memoryUsage > 80 {
-				fmt.Printf("Memory usage too hihg: %.2f%%\n", memoryUsage)
+				fmt.Printf("Memory usage too hihg: %d%%\n", int(memoryUsage))
 			}
 		}
 
